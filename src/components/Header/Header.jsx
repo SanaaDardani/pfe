@@ -9,28 +9,19 @@ import Badge from '@material-ui/core/Badge';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import { withStyles } from '@material-ui/core/styles';
-import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import HeaderStyle from './Header.style';
+import Avatar from '@material-ui/core/Avatar';
+import { NavLink } from 'react-router-dom';
 
 
   class PrimarySearchAppBar extends React.Component {
     state = {
-      anchorEl: null,
       mobileMoreAnchorEl: null,
-    };
-  
-    handleProfileMenuOpen = event => {
-      this.setState({ anchorEl: event.currentTarget });
-    };
-  
-    handleMenuClose = () => {
-      this.setState({ anchorEl: null });
-      this.handleMobileMenuClose();
     };
   
     handleMobileMenuOpen = event => {
@@ -44,22 +35,8 @@ import HeaderStyle from './Header.style';
     render() {
       const { anchorEl, mobileMoreAnchorEl } = this.state;
       const { classes } = this.props;
-      const isMenuOpen = Boolean(anchorEl);
       const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-  
-      const renderMenu = (
-        <Menu
-          anchorEl={anchorEl}
-          anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-          transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-          open={isMenuOpen}
-          onClose={this.handleMenuClose}
-        >
-          <MenuItem onClick={this.handleMenuClose}>Profile</MenuItem>
-          <MenuItem onClick={this.handleMenuClose}>My account</MenuItem>
-        </Menu>
-      );
-  
+ 
       const renderMobileMenu = (
         <Menu
           anchorEl={mobileMoreAnchorEl}
@@ -95,44 +72,26 @@ import HeaderStyle from './Header.style';
   
       return (
         <div className={classes.root}>
-          <AppBar position="static">
-            <Toolbar>
-              <IconButton className={classes.menuButton} color="inherit" aria-label="Open drawer">
-                <MenuIcon />
-              </IconButton>
-              <Typography className={classes.title} variant="h6" color="inherit" noWrap>
-                Logo Here
-              </Typography>
-              <div className={classes.grow} />
-              <div className={classes.sectionDesktop}>
-                <IconButton color="inherit">
-                  <Badge badgeContent={4} color="secondary">
-                    <MailIcon />
-                  </Badge>
-                </IconButton>
-                <IconButton color="inherit">
-                  <Badge badgeContent={17} color="secondary">
-                    <NotificationsIcon />
-                  </Badge>
-                </IconButton>
-                <IconButton
-                  aria-owns={isMenuOpen ? 'material-appbar' : undefined}
-                  aria-haspopup="true"
-                  onClick={this.handleProfileMenuOpen}
-                  color="inherit"
-                >
-                  <AccountCircle />
-                </IconButton>
-              </div>
-              <div className={classes.sectionMobile}>
-                <IconButton aria-haspopup="true" onClick={this.handleMobileMenuOpen} color="inherit">
-                  <MoreIcon />
-                </IconButton>
-              </div>
-            </Toolbar>
-          </AppBar>
-          {renderMenu}
-          {renderMobileMenu}
+            <AppBar position="static" className={classes.styleAppBar}>
+                <Toolbar variant="dense">
+                    <Avatar alt="Logo" src={process.env.PUBLIC_URL + '/images/logoCar.jpg'} className={classes.avatar} />  
+                    <div className={classes.grow} />
+                        <div className={classes.sectionDesktop}>
+                            <NavLink to="/" exact className={classes.link} activeStyle={{color:'#fff'}} >
+                                HomePage
+                            </NavLink>
+                            <NavLink to="/auth" exact className={classes.link} activeStyle={{color:'#ff'}} >
+                                Auth
+                            </NavLink>
+                        </div>
+                        <div className={classes.sectionMobile}>
+                            <IconButton aria-haspopup="true" onClick={this.handleMobileMenuOpen} color="inherit">
+                                <MoreIcon />
+                            </IconButton>
+                        </div>
+                </Toolbar>
+            </AppBar>
+            {renderMobileMenu}
         </div>
       );
     }

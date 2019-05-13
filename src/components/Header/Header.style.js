@@ -1,10 +1,20 @@
-import { fade } from '@material-ui/core/styles/colorManipulator';
 const HeaderStyle = theme => ({
+
     root: {
       width: '100%',
     },
     grow: {
       flexGrow: 1,
+    },
+    styleAppBar:
+    {
+        backgroundColor:'#2196f3',
+        minHeight: '65px'
+    },
+      avatar: {
+      margin: 10,
+      width: 60,
+      height: 60,
     },
     menuButton: {
       marginLeft: -12,
@@ -19,6 +29,16 @@ const HeaderStyle = theme => ({
     inputRoot: {
       color: 'inherit',
       width: '100%',
+    },
+    link: {
+      margin: theme.spacing.unit,
+      color:'#464b5b',
+      textDecoration:'none',
+      fontWeight:700,
+      fontSize:'18px',
+      '&:hover': {
+        color: "#fff",
+     },
     },
     inputInput: {
       paddingTop: theme.spacing.unit,

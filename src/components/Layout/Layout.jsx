@@ -2,15 +2,15 @@ import React, { Component } from 'react';
 import Auxi from '../../hoc/Auxi';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
-import HomePage from './../../containers/HomePage/HomePage';
+import Routes from '../../routes/routes';
 
 const Layout = (props) =>
 (
     <Auxi>
-            <Header />
-            <main>
-                <HomePage />
-            </main>
+        <Header />
+        <main>
+            <Routes/>
+        </main>
         <Footer />
     </Auxi>
 )

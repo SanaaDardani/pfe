@@ -11,11 +11,11 @@ function Footer(props) {
     return (
       <footer className={classes.footer}>
         <Paper className={classes.root} elevation={1}>
-          <Typography variant="h5" component="h3">
+          <Typography variant="h6" color="inherit">
             React App with Material UI
           </Typography>
           <Typography component="p">
-            @2018 All right reserved
+            @2019 All right reserved
           </Typography>
         </Paper>
       </footer>
