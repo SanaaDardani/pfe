@@ -1,4 +1,4 @@
-import React, { PureComponent } from "react";
+import React, { PureComponent, Fragment } from "react";
 import { ScatterChart,Scatter,XAxis,YAxis,ZAxis,CartesianGrid,Tooltip,
         Legend,PieChart,Pie,Sector,Cell,BarChart,Bar }
     from "recharts";
@@ -52,11 +52,12 @@ const dataBar = [
 class ModelsReporting extends PureComponent {
   render() {
     return (
-        <div className="">
+        <>
             <Grid container>
-                <Grid item xs={6}>
+            <Grid item xs={2}></Grid>
+                <Grid item xs={4}>
                     <BarChart width={500} height={300} data={dataBar} 
-                        margin={{top: 20, right: 30, left: 20, bottom: 5 }} >
+                        margin={{top: 30,bottom: 20 }} >
                         <CartesianGrid strokeDasharray="3 3" />
                         <XAxis dataKey="name" />
                         <YAxis />
@@ -66,12 +67,12 @@ class ModelsReporting extends PureComponent {
                         <Bar dataKey="uv" stackId="a" fill="#82ca9d" />
                 </BarChart>
                 </Grid>
-                <Grid item xs={6}>
-                    <PieChart width={400} height={400}>
+                <Grid item xs={4}>
+                    <PieChart width={500} height={300}>
                         <Pie
                             data={dataPie}
-                            cx={200}
-                            cy={200}
+                            cx={300}
+                            cy={150}
                             labelLine={false}
                             label={renderCustomizedLabel}
                             outerRadius={80}
@@ -84,21 +85,22 @@ class ModelsReporting extends PureComponent {
                         </Pie>
                     </PieChart>
                 </Grid>
+                <Grid item xs={2}></Grid>
                 <Grid item xs={12}>
-                <ScatterChart width={900} height={300}
-                    margin={{ top: 20, right: 20, bottom: 10, left: 0 }}>
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="x" name="stature" unit="cm" />
-                    <YAxis dataKey="y" name="weight" unit="kg" />
-                    <ZAxis dataKey="z" range={[64, 144]} name="score" unit="km" />
-                    <Tooltip cursor={{ strokeDasharray: '3 3' }} />
-                    <Legend />
-                    <Scatter name="A school" data={dataScater1} fill="#8884d8" />
-                    <Scatter name="B school" data={dataScater2} fill="#82ca9d" />
-                </ScatterChart>
+                    <ScatterChart width={900} height={300}
+                        margin={{ top: 30,bottom: 20}} style={{textAlign:'center',width:'100%'}}>
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <XAxis dataKey="x" name="stature" unit="cm" />
+                        <YAxis dataKey="y" name="weight" unit="kg" />
+                        <ZAxis dataKey="z" range={[64, 144]} name="score" unit="km" />
+                        <Tooltip cursor={{ strokeDasharray: '3 3' }} />
+                        <Legend />
+                        <Scatter name="A school" data={dataScater1} fill="#8884d8" />
+                        <Scatter name="B school" data={dataScater2} fill="#82ca9d" />
+                    </ScatterChart>
                 </Grid>
             </Grid>
-        </div>
+        </>
     );
   }
 }

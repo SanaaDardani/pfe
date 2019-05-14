@@ -9,12 +9,12 @@ const HeaderStyle = theme => ({
     styleAppBar:
     {
         backgroundColor:'#2196f3',
-        minHeight: '65px'
+        maxHeight: '70px'
     },
       avatar: {
-      margin: 10,
-      width: 60,
-      height: 60,
+      margin: 6,
+      width: 50,
+      height: 50,
     },
     menuButton: {
       marginLeft: -12,

@@ -8,7 +8,9 @@ const Layout = (props) =>
 (
     <Auxi>
         <Header />
-        <main>
+        <main style=
+            {{ position: 'relative' }}
+        >
             <Routes/>
         </main>
         <Footer />

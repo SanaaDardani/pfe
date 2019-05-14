@@ -36,11 +36,13 @@ class ModelCar extends Component{
                             <Grid item xs={2} className={classes.spacing}>
                                 <Card className={classes.card}>
                                     <CardContent>
-                                        <NavLink to={`/${model.name.toLowerCase().split(' ').join('_')}`}
-                                        className={classes.link}>
-                                            <h3 className={classes.stTitle} >
-                                                {model.name}
-                                            </h3>
+                                        <NavLink to={`/${model.name.toLowerCase()
+                                             .split(' ').join('_')}`}className={classes.link}>
+                                            <React.Fragment key={model.id}>
+                                                <h3 className={classes.stTitle} >
+                                                    {model.name}
+                                                </h3>
+                                            </React.Fragment>
                                         </NavLink>
                                     </CardContent>
                                 </Card>

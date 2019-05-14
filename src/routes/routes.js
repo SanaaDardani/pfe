@@ -1,5 +1,5 @@
 import React from 'react'
-import {Route,Switch} from 'react-router-dom';
+import {Route,Switch,Redirect} from 'react-router-dom';
 import HomePage from '../containers/HomePage/HomePage';
 import Auth from '../containers/Auth/Auth';
 import ModelCar from '../components/Models/ModelCar';
@@ -14,6 +14,7 @@ const routes = ()=> (
             <Route exact path="/models/:model" component={ModelCar}/>
             <Route exact path="/:reporting" component={Reporting}/>
             <Route component={Notfound} />
+            <Redirect to="/" />
         </Switch>
 )
 

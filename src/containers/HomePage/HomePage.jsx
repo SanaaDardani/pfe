@@ -12,10 +12,11 @@ import Auxi from '../../hoc/Auxi';
 import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom';
 import { ScatterChart,Scatter,XAxis,YAxis,ZAxis,CartesianGrid,Tooltip,Legend}from "recharts";
-import Video from '../../assets/Videos/video'
+import SelectCar from '../../components/MainSearch/MainSearch'
 
 // Action creators
 import {fetchVehicules} from '../../redux/actions/vehiculesAction';
+
 
 // Reporting 
 const dataScater1 = [
@@ -49,7 +50,7 @@ class HomePage extends Component{
 
     return (
     <Auxi>
-        <Video />
+        <SelectCar />
         <Grid container className={classes.root}>
             <Grid item xs={2}></Grid>
                 <Grid item xs={8}>
@@ -74,11 +75,16 @@ class HomePage extends Component{
                         <Grid item xs={2} className={classes.spacing}>
                             <Card className={classes.card}>
                                 <CardContent>
-                                    <NavLink to={`/models/${vehicule.name.toLowerCase().split(' ').join('_')}`} className={classes.link}>
-                                        <h3 className={classes.stTitle} >
-                                            {vehicule.name}
-                                        </h3>
-                                        <span className={classes.price}>{vehicule.prix}</span>
+                                    <NavLink to={`/models/${vehicule.name.toLowerCase()
+                                        .split(' ').join('_')}`} className={classes.link}>
+                                        <React.Fragment key={vehicule.id}>
+                                            <h3 className={classes.stTitle}>
+                                                {vehicule.name}
+                                            </h3>
+                                            <span className={classes.price}>
+                                                {vehicule.prix}
+                                            </span>
+                                        </React.Fragment>
                                     </NavLink>
                                 </CardContent>
                             </Card>
