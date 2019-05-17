@@ -7,16 +7,11 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import Button from '@material-ui/core/Button'
 import styles from './mainSearch.style';
+import video1 from '../../assets/video/video-background.mp4';
+import Form from '../Form/Form'
 
 
-class SelectCar extends React.Component {
-    state = {
-        car: '',
-    };
-
-  handleChange = event => {
-    this.setState({ [event.target.name]: event.target.value });
-  };
+class MainSearch extends React.Component {
 
   render() {
     const { classes } = this.props;
@@ -24,49 +19,15 @@ class SelectCar extends React.Component {
     return (
         <>
             <div className={classes.overlay}>
-                <form className={classes.root} autoComplete="off">
-                    <FormControl className={classes.formControl}>
-                        <Select
-                            value={this.state.car}
-                            onChange={this.handleChange}
-                            name="car"
-                            displayEmpty
-                            className={classes.select}
-                        >
-                        <MenuItem value="" disabled style={{color:"#fff"}}>Placeholder</MenuItem>
-                        <MenuItem value={10}>Car1</MenuItem>
-                        <MenuItem value={20}>Car2</MenuItem>
-                        <MenuItem value={30}>Car3</MenuItem>
-                        </Select>
-                        <FormHelperText style={{color:"#fff"}}>Placeholder</FormHelperText>
-                    </FormControl>
-
-                    <FormControl className={classes.formControl}>
-                        <Select
-                            value={this.state.car}
-                            onChange={this.handleChange}
-                            name="car"
-                            displayEmpty
-                            className={classes.select}
-                        >
-                        <MenuItem value="" disabled style={{color:"#fff"}}>Placeholder</MenuItem>
-                        <MenuItem value={10}>Car1</MenuItem>
-                        <MenuItem value={20}>Car2</MenuItem>
-                        <MenuItem value={30}>Car3</MenuItem>
-                        </Select>
-                        <FormHelperText style={{color:"#fff"}}>Placeholder</FormHelperText>
-                    </FormControl>
-                    <Button variant="contained" size="small" className={classes.primary}>
-                        Envoyée
-                    </Button>
-                </form>
-        
+                
             </div>
-            <iframe src = 'https://youtube.com/embed/Hvdbvr_ITZk'
+            {/* <video className={classes.v} width = "100%" height = "100%" src={video1}></video> */}
+            <iframe src ={video1}
                 allow = 'autoplay; encrypted-media'
                 allowFullScreen width = "100%" height = "500" 
                 title = 'video' className={classes.iframCar}
             />
+           
         </>
     );
 
@@ -75,8 +36,8 @@ class SelectCar extends React.Component {
 }
 
 
-SelectCar.propTypes = {
+MainSearch.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(SelectCar);
+export default withStyles(styles)(MainSearch);

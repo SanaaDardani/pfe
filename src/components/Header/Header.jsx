@@ -17,6 +17,7 @@ import MoreIcon from '@material-ui/icons/MoreVert';
 import HeaderStyle from './Header.style';
 import Avatar from '@material-ui/core/Avatar';
 import { NavLink } from 'react-router-dom';
+import logo from '../../assets/img/logoCar.png'
 
 
   class PrimarySearchAppBar extends React.Component {
@@ -72,26 +73,26 @@ import { NavLink } from 'react-router-dom';
   
       return (
         <div className={classes.root}>
-            <AppBar position="static" className={classes.styleAppBar}>
-                <Toolbar variant="dense">
-                    <Avatar alt="Logo" src={process.env.PUBLIC_URL + '/images/logoCar.jpg'} className={classes.avatar} />  
-                    <div className={classes.grow} />
-                        <div className={classes.sectionDesktop}>
-                            <NavLink to="/" exact className={classes.link} activeStyle={{color:'#fff'}} >
-                                HomePage
-                            </NavLink>
-                            <NavLink to="/auth" exact className={classes.link} activeStyle={{color:'#ff'}} >
-                                Auth
-                            </NavLink>
-                        </div>
-                        <div className={classes.sectionMobile}>
-                            <IconButton aria-haspopup="true" onClick={this.handleMobileMenuOpen} color="inherit">
-                                <MoreIcon />
-                            </IconButton>
-                        </div>
+            <AppBar position="absolute" color="default" className={classes.styleAppBar}>
+                <Toolbar>
+                    <Avatar alt="Logo" src={logo} className={classes.avatar} />  
+                        <div className={classes.grow} />
+                            <div className={classes.sectionDesktop}>
+                                <NavLink to="/" exact className={classes.link} activeStyle={{color:'#fff'}} >
+                                    HomePage
+                                </NavLink>
+                                <NavLink to="/auth" exact className={classes.link} activeStyle={{color:'#ff'}} >
+                                    Auth
+                                </NavLink>
+                            </div>
+                            <div className={classes.sectionMobile}>
+                                <IconButton aria-haspopup="true" onClick={this.handleMobileMenuOpen} color="inherit">
+                                    <MoreIcon />
+                                </IconButton>
+                            </div>
                 </Toolbar>
             </AppBar>
-            {renderMobileMenu}
+                {renderMobileMenu}
         </div>
       );
     }

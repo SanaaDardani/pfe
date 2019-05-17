@@ -10,7 +10,7 @@ const styles = theme => ({
     },
     iframCar:{
         overflow:'hidden',
-        border:'none'
+        border:'none',
     },
     select:{
         color:"#fff",
@@ -21,8 +21,8 @@ const styles = theme => ({
     overlay:{ 
         position: 'absolute',
         width : '100%',
-        height : '54%',
-        background:'linear-gradient( rgba(1, 1, 1, 0.70), rgba(1, 1, 1, 0.57),rgba(1, 11, 1, 0.62))',
+        height : '47%',
+        background:'linear-gradient( rgba(1, 1, 1, 0.5), rgba(1, 1, 1, 0.4),rgba(1, 11, 1, 0.9))',
         zIndex : 3,
         display: "flex",
         alignItems: "center",

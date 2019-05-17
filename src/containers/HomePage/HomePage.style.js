@@ -1,8 +1,21 @@
 const HomePageStyle = theme =>({
 
     card: {
-      maxWidth: 170,
-      maxHeight:100
+    backgroundColor: '#fff',
+    boxShadow: '0 2px 30px rgba(0, 0, 0, 0.2)',
+    width: '200px',
+    height: '200px',
+    margin: '25px',
+    borderRadius: '4px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    cursor: 'pointer',
+    transition: '300ms opacity, 300ms transform',
+      '&:hover':{
+        transform: 'scale(1.2)',
+        opacity: 1
+      }
     },
     spacing:
     {
@@ -36,9 +49,13 @@ const HomePageStyle = theme =>({
     },
     price:
     {
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center'
+      float: 'left',
+      color: '#B2EBF2',
+      fontSize: '20px',
+      fontWeight: '700',
+      paddingTop: '2px',
+      transition: 'color .3s ease-in-out',
+      marginTop: '4px'
     }
   });
 

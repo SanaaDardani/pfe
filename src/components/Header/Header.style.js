@@ -8,12 +8,13 @@ const HeaderStyle = theme => ({
     },
     styleAppBar:
     {
-        backgroundColor:'#2196f3',
-        maxHeight: '70px'
+        backgroundColor:'#B2EBF2',
+        maxHeight: '70px',
+        position: "relative",
     },
       avatar: {
       margin: 6,
-      width: 50,
+      width: 60,
       height: 50,
     },
     menuButton: {
@@ -32,7 +33,7 @@ const HeaderStyle = theme => ({
     },
     link: {
       margin: theme.spacing.unit,
-      color:'#464b5b',
+      color:'#1A237E',
       textDecoration:'none',
       fontWeight:700,
       fontSize:'18px',

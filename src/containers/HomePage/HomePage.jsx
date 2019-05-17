@@ -2,20 +2,17 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import HomePageStyle from './HomePage.style';
 import Auxi from '../../hoc/Auxi';
 import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom';
 import { ScatterChart,Scatter,XAxis,YAxis,ZAxis,CartesianGrid,Tooltip,Legend}from "recharts";
-import SelectCar from '../../components/MainSearch/MainSearch'
+import MainSearch from '../../components/MainSearch/MainSearch'
 
 // Action creators
-import {fetchVehicules} from '../../redux/actions/vehiculesAction';
+import {fetchMarques} from '../../redux/marques/actions';
 
 
 // Reporting 
@@ -40,22 +37,22 @@ class HomePage extends Component{
 
     componentWillMount()
     {
-        this.props.fetchVehicules();
+        this.props.fetchMarques();
     }
   
     render() {
     
-    const { classes, vehicules } = this.props;
+    const { classes, marques } = this.props;
     // const { params } = this.props.match
 
     return (
     <Auxi>
-        <SelectCar />
-        <Grid container className={classes.root}>
-            <Grid item xs={2}></Grid>
-                <Grid item xs={8}>
-                <ScatterChart width={900} height={300}
-                    margin={{ top: 20, right: 0, bottom: 20, left: 0 }}>
+        <MainSearch />
+            <Grid container className={classes.root}>
+                <Grid item xs={2}></Grid>
+                    <Grid item xs={8}>
+                        <ScatterChart width={900} height={300}
+                    margin={{ top: 30, right: 0, bottom: 30, left: 0 }}>
                     <CartesianGrid strokeDasharray="3 3" />
                     <XAxis dataKey="x" name="stature" unit="cm" />
                     <YAxis dataKey="y" name="weight" unit="kg" />
@@ -65,35 +62,33 @@ class HomePage extends Component{
                     <Scatter name="A school" data={dataScater1} fill="#8884d8" />
                     <Scatter name="B school" data={dataScater2} fill="#82ca9d" />
                 </ScatterChart>
-                </Grid>
-            <Grid item xs={2}></Grid>
+                    </Grid>
+                <Grid item xs={2}></Grid>
             
-            <Grid item xs={2}></Grid>
-            {
-                vehicules.map((vehicule) => {
-                    return (
-                        <Grid item xs={2} className={classes.spacing}>
-                            <Card className={classes.card}>
-                                <CardContent>
-                                    <NavLink to={`/models/${vehicule.name.toLowerCase()
-                                        .split(' ').join('_')}`} className={classes.link}>
-                                        <React.Fragment key={vehicule.id}>
-                                            <h3 className={classes.stTitle}>
-                                                {vehicule.name}
-                                            </h3>
-                                            <span className={classes.price}>
-                                                {vehicule.prix}
-                                            </span>
-                                        </React.Fragment>
-                                    </NavLink>
-                                </CardContent>
-                            </Card>
-                        </Grid>
-                    );
-                })
-            }
-          <Grid item xs={2}></Grid>
-    </Grid>
+                <Grid item xs={2}></Grid>
+                    {
+                    marques.map((marque) => {
+                        return (
+                            <Grid item xs={2} className={classes.spacing}>
+                                <Card className={classes.card}>
+                                    <CardContent>
+                                        <NavLink to={`/models/${marque.name.toLowerCase()
+                                            .split(' ').join('_')}`} className={classes.link}>
+                                                <h3 className={classes.stTitle}>
+                                                    {marque.name}
+                                                </h3>
+                                                <span className={classes.price}>
+                                                    {marque.prix}
+                                                </span>
+                                        </NavLink>
+                                    </CardContent>
+                                </Card>
+                            </Grid>
+                                    );
+                                })
+                            }
+                <Grid item xs={2}></Grid>
+            </Grid>
     </Auxi>
   
     )
@@ -106,9 +101,9 @@ HomePage.propTypes = {
 }; 
 
 const mapStateToprops = state =>({
-    vehicules : state.vehicules
+    marques : state.marques
 })
 
-export default connect(mapStateToprops,{ fetchVehicules })(withStyles(HomePageStyle)(HomePage))
+export default connect(mapStateToprops,{ fetchMarques })(withStyles(HomePageStyle)(HomePage))
 
 
