@@ -10,14 +10,14 @@ function Footer(props) {
    
     return (
       <footer className={classes.footer}>
-            <Paper className={classes.paper} elevation={1}>
-                <Typography variant="h6" style={{color:"#1A237E"}}>
+            {/* <Paper className={classes.paper} elevation={1}>
+                <Typography variant="h6" className={classes.title}>
                     React App with Material UI
                 </Typography>
-                <Typography component="p" style={{color:"#1A237E"}}>
+                <Typography component="p"className={classes.parag}>
                     @2019 All right reserved
                 </Typography>
-            </Paper>
+            </Paper> */}
       </footer>
     );
   }

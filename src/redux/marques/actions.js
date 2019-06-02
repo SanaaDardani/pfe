@@ -4,7 +4,7 @@ export const FETCH_MARQUES = 'marques:fetchMarques';
 
 export const fetchMarques = () => async (dispatch) => {
 
-    const response = await axios.get('http://www.mocky.io/v2/5cdd566f3000000426e2374f');
+    const response = await axios.get('http://127.0.0.1:8000/api/marks');
 
     dispatch({
         type: FETCH_MARQUES,
@@ -14,4 +14,3 @@ export const fetchMarques = () => async (dispatch) => {
     });
             
 }
-

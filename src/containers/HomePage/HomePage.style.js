@@ -2,12 +2,13 @@ const HomePageStyle = theme =>({
 
     card: {
     backgroundColor: '#fff',
-    boxShadow: '0 2px 30px rgba(0, 0, 0, 0.2)',
-    width: '200px',
-    height: '200px',
+    boxShadow: '0 2px 10px rgba(0, 0, 0, 0.2)',
+    width: '166px',
+    height: '130px',
     margin: '25px',
     borderRadius: '4px',
     display: 'flex',
+    marginTop: '60px',
     alignItems: 'center',
     justifyContent: 'center',
     cursor: 'pointer',
@@ -17,11 +18,6 @@ const HomePageStyle = theme =>({
         opacity: 1
       }
     },
-    spacing:
-    {
-      margin:'.25rem',
-      marginTop:'1rem'
-    },
     link: 
     {
       textDecoration:'none',
@@ -30,11 +26,6 @@ const HomePageStyle = theme =>({
     root:
     {
       flexGrow: 1,
-    },
-    bullet: {
-      display: 'inline-block',
-      margin: '0 2px',
-      transform: 'scale(0.8)',
     },
     title: {
       fontSize: 14,
@@ -50,7 +41,7 @@ const HomePageStyle = theme =>({
     price:
     {
       float: 'left',
-      color: '#B2EBF2',
+      color: '#333',
       fontSize: '20px',
       fontWeight: '700',
       paddingTop: '2px',

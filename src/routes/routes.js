@@ -1,20 +1,19 @@
 import React from 'react'
-import {Route,Switch,Redirect} from 'react-router-dom';
+import {Route,Switch} from 'react-router-dom';
 import HomePage from '../containers/HomePage/HomePage';
-import Auth from '../containers/Auth/Auth';
 import ModelCar from '../containers/Models/ModelCar';
-import Reporting from '../Charts/Reporting'
+import Reporting from '../components/Chart/ReportingModels';
+import Cote from '../containers/CotePage/Cote';
 import notfound from './error/notfound';
 
 const routes = ()=> (
 
         <Switch>
             <Route exact path="/" component={HomePage}/>
-            <Route exact path="/auth" component={Auth}/>
-            <Route exact path="/models/:model" component={ModelCar}/>
+            <Route exact path="/model/:model" component={ModelCar}/>
+            <Route exact path="/cote" component={Cote}/>
             <Route exact path="/:reporting" component={Reporting}/>
             <Route component={notfound} />
-            <Redirect to="/" />
         </Switch>
 )
 

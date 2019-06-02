@@ -17,13 +17,13 @@ import MoreIcon from '@material-ui/icons/MoreVert';
 import HeaderStyle from './Header.style';
 import Avatar from '@material-ui/core/Avatar';
 import { NavLink } from 'react-router-dom';
-import logo from '../../assets/img/logoCar.png'
+import logo from '../../assets/img/logoCar.png';
 
 
   class PrimarySearchAppBar extends React.Component {
     state = {
       mobileMoreAnchorEl: null,
-    };
+    }
   
     handleMobileMenuOpen = event => {
       this.setState({ mobileMoreAnchorEl: event.currentTarget });
@@ -79,10 +79,7 @@ import logo from '../../assets/img/logoCar.png'
                         <div className={classes.grow} />
                             <div className={classes.sectionDesktop}>
                                 <NavLink to="/" exact className={classes.link} activeStyle={{color:'#fff'}} >
-                                    HomePage
-                                </NavLink>
-                                <NavLink to="/auth" exact className={classes.link} activeStyle={{color:'#ff'}} >
-                                    Auth
+                                    Accueil
                                 </NavLink>
                             </div>
                             <div className={classes.sectionMobile}>

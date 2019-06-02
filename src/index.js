@@ -18,7 +18,9 @@ const store = createStore(
     allReducers,
     {
         marques: [],
-        models: []
+        models: [],
+        ads: [],
+        adsModel: []
     },
     composeEnhancers(
         applyMiddleware(thunk)

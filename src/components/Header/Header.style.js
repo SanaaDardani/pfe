@@ -8,9 +8,10 @@ const HeaderStyle = theme => ({
     },
     styleAppBar:
     {
-        backgroundColor:'#B2EBF2',
-        maxHeight: '70px',
-        position: "relative",
+      backgroundImage: 'linear-gradient(45deg, #0288d1, #26c6da)',
+      boxShadow: '0 6px 20px 0 rgba(38, 198, 218, .5)',
+      maxHeight: '70px',
+      position: "relative"
     },
       avatar: {
       margin: 6,
@@ -33,7 +34,7 @@ const HeaderStyle = theme => ({
     },
     link: {
       margin: theme.spacing.unit,
-      color:'#1A237E',
+      color:'#333',
       textDecoration:'none',
       fontWeight:700,
       fontSize:'18px',
