@@ -1,4 +1,4 @@
-import { FETCH_MARQUES} from './actions';
+import { FETCH_MARQUES } from './actions';
 
 function marquesReducer(state = [], action) {
 
@@ -6,6 +6,7 @@ function marquesReducer(state = [], action) {
 
         case FETCH_MARQUES:
             return action.payload.marques;
+            
         default:
             return state;
 

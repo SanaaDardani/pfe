@@ -2,9 +2,9 @@ import axios from 'axios';
 
 export const FETCH_MODELS = 'models:fetchModels';
 
-export const fetchModels = () => async (dispatch) => {
+export const fetchModels = (param) => async (dispatch) => {
 
-    const response = await axios.get('http://www.mocky.io/v2/5cd2ec163100007628339b08');
+    const response = await axios.get('http://127.0.0.1:8000/api/models/'+param);
     dispatch({
         type: FETCH_MODELS,
         payload: {

@@ -3,10 +3,15 @@ const FooterStyle = theme => ({
       ...theme.mixins.gutters(),
       paddingTop: theme.spacing.unit * 2,
       paddingBottom: theme.spacing.unit * 2,
-      background:"#B2EBF2"
+      backgroundImage: 'linear-gradient(to right top, #845ec2, #0085e4, #00a2e5, #00b9cc, #00c9a7)',
     },
-    h6:{
-      color:"#1A237E"
+    title:
+    {
+      color:"#fff"
+    },
+    parag:
+    {
+      color:"#fff"
     }
     // footer: {
     //   backgroundColor: theme.palette.background.paper,
