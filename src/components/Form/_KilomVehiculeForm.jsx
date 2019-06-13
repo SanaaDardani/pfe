@@ -18,7 +18,7 @@ const styles = theme => ({
   },
 });
 
-const currencies = [
+const carburants = [
     {
       value: 'GAZOLE',
       label: 'GAZOLE',
@@ -28,25 +28,20 @@ const currencies = [
       label: 'DIESEL',
     },
     {
-        value: 'GPL',
-        label: 'GPL',
-      },
-    {
       value: 'ESSENCE',
       label: 'ESSENCE',
     },
-    {
-      value: 'GNV',
-      label: 'GNV',
-    },
+
   ];
-class kilometresVehicule extends React.Component {
+class kilometreVehiculeForm extends React.Component {
   state = {
     carburants : 'ESSENCE',
+    kilometre: '' 
   };
 
   handleChange = name => event => {
     this.setState({ [name]: event.target.value });
+    console.log(event.target.value)
   };
 
   render() {
@@ -58,35 +53,35 @@ class kilometresVehicule extends React.Component {
                 Combien de kilomètres au compteur ?			
             </Typography>
             <form className={classes.container} noValidate autoComplete="off">
-            <TextField
-                id="standard-number"
-                label="Kilométrage"
-                value={this.state.age}
-                onChange={this.handleChange('kilometres')}
-                type="number"
-                className={classes.textField}
-                helperText="S'il vous plaît sélectionnez votre Kilométrage"
-                InputLabelProps={{
-                    shrink: true,
-                }}
-                margin="normal"
-            />
-            <TextField
-                id="standard-select-currency"
-                select
-                label="Carburants"
-                className={classes.textField}
-                value={this.state.carburants}
-                onChange={this.handleChange('carburants')}
-                SelectProps={{
-                    MenuProps: {
-                    className: classes.menu,
-                    },
-                }}
-                helperText="S'il vous plaît sélectionnez votre carburant"
-                margin="normal"
-            >
-                {currencies.map(option => (
+                <TextField
+                    id="standard-number"
+                    label="Kilométrage"
+                    value={this.state.age}
+                    onChange={this.handleChange('kilometre')}
+                    type="number"
+                    className={classes.textField}
+                    helperText="S'il vous plaît sélectionnez votre Kilométrage"
+                    InputLabelProps={{
+                        shrink: true,
+                    }}
+                    margin="normal"
+                />
+                <TextField
+                    id="standard-select-carburants"
+                    select
+                    label="Carburants"
+                    className={classes.textField}
+                    value={this.state.carburants}
+                    onChange={this.handleChange('carburants')}
+                    SelectProps={{
+                        MenuProps: {
+                        className: classes.menu,
+                        },
+                    }}
+                    helperText="S'il vous plaît sélectionnez votre carburant"
+                    margin="normal"
+                >
+                {carburants.map(option => (
                     <MenuItem key={option.value} value={option.value}>
                         {option.label}
                     </MenuItem>
@@ -98,8 +93,8 @@ class kilometresVehicule extends React.Component {
   }
 }
 
-kilometresVehicule.propTypes = {
+kilometreVehiculeForm.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(kilometresVehicule);
+export default withStyles(styles)(kilometreVehiculeForm);

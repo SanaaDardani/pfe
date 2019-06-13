@@ -3,8 +3,8 @@ const HomePageStyle = theme =>({
     card: {
     backgroundColor: '#fff',
     boxShadow: '0 2px 10px rgba(0, 0, 0, 0.2)',
-    width: '166px',
-    height: '130px',
+    width: "122px",
+    height: "70px",
     margin: '25px',
     borderRadius: '4px',
     display: 'flex',
@@ -21,7 +21,7 @@ const HomePageStyle = theme =>({
     link: 
     {
       textDecoration:'none',
-      color:'#878787'
+      color:'#000',
     },
     root:
     {
@@ -36,17 +36,17 @@ const HomePageStyle = theme =>({
     stTitle :
     {
       textAlign:'center',
-      whiteSpace: 'nowrap'
+      whiteSpace: 'nowrap',
+      fontSize:'15px'
     },
     price:
     {
-      float: 'left',
-      color: '#333',
-      fontSize: '20px',
+      color: '#878787',
+      fontSize: '12px',
       fontWeight: '700',
       paddingTop: '2px',
       transition: 'color .3s ease-in-out',
-      marginTop: '4px'
+      marginTop: '4px',
     }
   });
 

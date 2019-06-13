@@ -12,5 +12,4 @@ export const fetchMarques = () => async (dispatch) => {
             marques: response.data
         }
     });
-            
 }

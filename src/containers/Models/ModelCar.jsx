@@ -89,7 +89,4 @@ const mapStateToprops = state => ({
   adsModel: state.adsModel
 });
 
-export default connect(
-  mapStateToprops,
-  { fetchModels, countAdsModel }
-)(withStyles(ModelCarStyle)(ModelCar));
+export default connect(mapStateToprops,{ fetchModels, countAdsModel })(withStyles(ModelCarStyle)(ModelCar));
