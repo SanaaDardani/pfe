@@ -8,7 +8,7 @@ import HomePageStyle from './HomePage.style';
 import Auxi from '../../hoc/Auxi';
 import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom';
-import Form from '../../components/Form/Form';
+import CoteForm from '../../components/Form/CoteForm';
 
 // Action creators
 import {fetchMarques} from '../../redux/marques/actions';
@@ -20,47 +20,46 @@ class HomePage extends Component{
 
     componentWillMount()
     {
-        this.props.fetchMarques();
+        this.props.fetchMarques()
     }
-  
     render() {
     
     const { classes, marques } = this.props;
     // const { params } = this.props.match
 
     return (
+        
     <Auxi>
-            
-            <Grid container className={classes.root}>
-                <Grid item xs={6}>
-                    <Form />
-                </Grid>
-                <Grid item xs={6} style={{textAlign:'center'}}>
-                    <ReportingMarques />
-                </Grid>
-    
-                    {
-                        marques.map((marque, index) => {
-                        return (
-                            
-                            <Grid item xs={2} key={index}>
-                                <Card className={classes.card}>
-                                            <NavLink to={`/model/${marque.mark}`} className={classes.link}>
-                                                <CardContent>
-                                                    <h3 className={classes.stTitle}>
-                                                        {marque.mark}
-                                                    </h3>
-                                                    <span className={classes.price}>
-                                                        {marque.price}
-                                                    </span>
-                                                </CardContent>
-                                            </NavLink>
+        <Grid container className={classes.root}>
+            <Grid item xs={6}>
+                <CoteForm marks={marques}/>
+            </Grid>
+                {
+                    marques.map((marque, index) => {
+                    return (
+                        <Grid item xs={2} key={index}>
+                                    <Card className={classes.card}>
+                                        <NavLink to={`/model/${marque.mark}`} className={classes.link}>
+                                            <CardContent>
+                                                <h3 className={classes.stTitle}>
+                                                    {marque.mark}
+                                                </h3>
+                                                <span className={classes.price}>
+                                                    {marque.price.toLocaleString(navigator.language,
+                                                    { minimumFractionDigits: 2 })}DH
+                                                </span>
+                                            </CardContent>
+                                        </NavLink>
                                     </Card>
-                            </Grid>
+                                </Grid>
                             );
                             })
-                    }
+                } 
+                <Grid item xs={6}>
+                    <ReportingMarques />
+                    </Grid>
             </Grid>
+            
     </Auxi>
   
     )
