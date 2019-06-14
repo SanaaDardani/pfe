@@ -33,11 +33,13 @@ class HomePage extends Component{
         <Grid container className={classes.root}>
             <Grid item xs={6}>
                 <CoteForm marks={marques}/>
+                <ReportingMarques />
             </Grid>
+            <Grid container item xs={6}>
                 {
                     marques.map((marque, index) => {
                     return (
-                        <Grid item xs={2} key={index}>
+                        <Grid item xs={3} key={index}>
                                     <Card className={classes.card}>
                                         <NavLink to={`/model/${marque.mark}`} className={classes.link}>
                                             <CardContent>
@@ -53,13 +55,10 @@ class HomePage extends Component{
                                     </Card>
                                 </Grid>
                             );
-                            })
+                            }) 
                 } 
-                <Grid item xs={6}>
-                    <ReportingMarques />
-                    </Grid>
             </Grid>
-            
+        </Grid>
     </Auxi>
   
     )

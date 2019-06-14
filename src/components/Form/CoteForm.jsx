@@ -7,6 +7,7 @@ import InputLabel from "@material-ui/core/InputLabel";
 import Grid from "@material-ui/core/Grid";
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
+import Paper from "@material-ui/core/Paper";
 import axios from "axios";
 
 const styles = theme => ({
@@ -24,6 +25,20 @@ const styles = theme => ({
         marginRight: theme.spacing.unit,
         width: 200,
       },
+      paper: {
+        marginTop: theme.spacing.unit * 3,
+        marginBottom: theme.spacing.unit * 3,
+        padding: theme.spacing.unit * 2,
+        [theme.breakpoints.up(600 + theme.spacing.unit * 3 * 2)]: {
+          marginTop: theme.spacing.unit * 6,
+          marginBottom: theme.spacing.unit * 6,
+          padding: theme.spacing.unit * 3,
+          margin:'10px'
+        }
+    },
+    button:{
+        margin:'0 auto'
+    }
   });
   const carburants = [
     {
@@ -114,7 +129,8 @@ const styles = theme => ({
     const { values } = this.state;
     return (
         <form onSubmit={this.handleSubmit}>
-            <Grid container className={classes.root}>
+            <Paper className={classes.paper}>
+                <Grid container className={classes.root}>
                 <Grid item xs={6}>
                 <InputLabel>Marques : </InputLabel>
                     <Select value={this.state.selectedMark} onChange={this.handleChangeMarksSelect}
@@ -135,35 +151,35 @@ const styles = theme => ({
                         {this.renderModelsOptions()}
                     </Select>
                     </Grid>
-                    <Grid item xs={6}>
-                    <TextField
-                        label="Kilométrage"
-                        value={this.state.age}
-                        onChange={this.handleChange('kilometre')}
-                        type="number"
-                        className={classes.textField}
-                        helperText="S'il vous plaît sélectionnez votre Kilométrage"
-                        InputLabelProps={{
-                            shrink: true,
-                        }}
-                        margin="normal"
-                    />
+                <Grid item xs={6}>
+                        <TextField
+                            label="Kilométrage"
+                            value={this.state.age}
+                            onChange={this.handleChange('kilometre')}
+                            type="number"
+                            className={classes.textField}
+                            helperText="S'il vous plaît sélectionnez votre Kilométrage"
+                            InputLabelProps={{
+                                shrink: true,
+                            }}
+                            margin="normal"
+                        />
                 </Grid>
                 <Grid item xs={6}>
-                <TextField
-                    select
-                    label="Carburants"
-                    className={classes.textField}
-                    value={this.state.carburant}
-                    onChange={this.handleChange('carburant')}
-                    SelectProps={{
-                        MenuProps: {
-                        className: classes.menu,
-                        },
-                    }}
-                    helperText="S'il vous plaît sélectionnez votre carburant"
-                    margin="normal"
-                >
+                    <TextField
+                        select
+                        label="Carburants"
+                        className={classes.textField}
+                        value={this.state.carburant}
+                        onChange={this.handleChange('carburant')}
+                        SelectProps={{
+                            MenuProps: {
+                            className: classes.menu,
+                            },
+                        }}
+                        helperText="S'il vous plaît sélectionnez votre carburant"
+                        margin="normal"
+                    >
                 {carburants.map(option => (
                     <MenuItem key={option.value} value={option.value}>
                         {option.label}
@@ -195,6 +211,7 @@ const styles = theme => ({
                     Envoyée
                 </Button>
             </Grid>
+            </Paper>
         </form>
        
     );

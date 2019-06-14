@@ -107,7 +107,7 @@ class ReportingMarques extends PureComponent {
 
   render() {
     return (
-      <PieChart width={400} height={270} style={{width:'100%'}}>
+      <PieChart width={400} height={270} style={{width:'100%',textAlign:'center'}}>
         <Pie
           activeIndex={this.state.activeIndex}
           activeShape={this.renderActiveShape}
