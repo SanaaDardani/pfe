@@ -26,23 +26,22 @@ class HomePage extends Component{
     
     const { classes, marques } = this.props;
     // const { params } = this.props.match
-
     return (
         
     <Auxi>
         <Grid container className={classes.root}>
             <Grid item xs={6}>
-                <CoteForm marks={marques}/>
+                <CoteForm/>
                 <ReportingMarques />
             </Grid>
             <Grid container item xs={6}>
                 {
                     marques.map((marque, index) => {
                     return (
-                        <Grid item xs={3} key={index}>
+                        <Grid item xs={2} key={index}>
                                     <Card className={classes.card}>
                                         <NavLink to={`/model/${marque.mark}`} className={classes.link}>
-                                            <CardContent>
+                                            <CardContent className={classes.content}>
                                                 <h3 className={classes.stTitle}>
                                                     {marque.mark}
                                                 </h3>

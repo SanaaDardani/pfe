@@ -10,8 +10,6 @@ import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
 import ModelCarStyle from "./Modelcar.style";
 import {
-  ScatterChart,
-  Scatter,
   XAxis,
   YAxis,
   ZAxis,
@@ -42,38 +40,38 @@ class ModelCar extends Component {
     return (
       <Auxi>
         <Grid container className={classes.root}>
-          <Grid item xs={12}>
-            <BarChart
-              width={500}
-              height={300}
-              data={adsModel}
-              margin={{ top: 20,bottom: 5 }}
-              className={classes.barChart}
-            
-            >
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="model" />
-              <YAxis />
-              <Tooltip />
-              <Legend />
-              {/* <Bar dataKey="model" fill="#8884d8" /> */}
-              <Bar dataKey="numberOfAds" fill="#82ca9d" />
-            </BarChart>
-          </Grid>
-          {models.map((model, index) => {
-            return (
-              <Grid item xs={2} key={index}>
-                <Card className={classes.card}>
-                  <NavLink to={`/${model.model}`} className={classes.link}>
-                    <CardContent>
-                      <h3 className={classes.stTitle}>{model.model}</h3>
-                      <span className={classes.price}>{model.price}</span>
-                    </CardContent>
-                  </NavLink>
-                </Card>
-              </Grid>
-            );
-          })}
+            <Grid item xs={6}>
+                <BarChart
+                width={500}
+                height={300}
+                data={adsModel}
+                margin={{ top: 20,bottom: 5 }}
+                
+                >
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="model" />
+                <YAxis />
+                <Tooltip />
+                <Legend />
+                <Bar dataKey="numberOfAds" fill="#26c6da" />
+                </BarChart>
+            </Grid>
+            <Grid container item xs={6}>
+                {models.map((model, index) => {
+                    return (
+                    <Grid item xs={3} key={index}>
+                        <Card className={classes.card}>
+                          <NavLink to={`/${model.model}`} className={classes.link}>
+                              <CardContent className={classes.content}>
+                              <h3 className={classes.stTitle}>{model.model}</h3>
+                              <span className={classes.price}>{model.price} DH</span>
+                              </CardContent>
+                          </NavLink>
+                        </Card>
+                    </Grid>
+                    );
+                })}
+            </Grid>
         </Grid>
       </Auxi>
     );

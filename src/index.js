@@ -20,7 +20,8 @@ const store = createStore(
         marques: [],
         models: [],
         ads: [],
-        adsModel: []
+        adsModel: [],
+        cote: []
     },
     composeEnhancers(
         applyMiddleware(thunk)

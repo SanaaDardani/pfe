@@ -3,20 +3,23 @@ const ModelCarStyle = theme => ({
   card: {
     backgroundColor: '#fff',
     boxShadow: '0 2px 10px rgba(0, 0, 0, 0.2)',
-    width: '166px',
-    height: '130px',
-    margin: '25px',
+    width: "82px",
+    height: "40px",
     borderRadius: '4px',
     display: 'flex',
-    marginTop: '60px',
     alignItems: 'center',
     justifyContent: 'center',
     cursor: 'pointer',
+    marginTop: '14px',
     transition: '300ms opacity, 300ms transform',
       '&:hover':{
         transform: 'scale(1.2)',
         opacity: 1
       }
+    },
+    content:
+    {
+      padding:'0 !important',
     },
   spacing:
   {
@@ -26,11 +29,12 @@ const ModelCarStyle = theme => ({
   link: 
   {
     textDecoration:'none',
-    color:'#878787'
+    color:'#000',
   },
   root:
   {
     flexGrow: 1,
+    paddingTop:'30px'
   },
   title: {
     fontSize: 14,
@@ -44,17 +48,19 @@ const ModelCarStyle = theme => ({
   stTitle :
   {
     textAlign:'center',
-    whiteSpace: 'nowrap'
+    fontSize:'9px',
+    textTransform:'uppercase',
+    padding: '0px',
+    margin: '0px'
   },
   price:
   {
-    float: 'left',
-    color: '#333',
-    fontSize: '20px',
+    color: '#878787',
+    fontSize: '9px',
     fontWeight: '700',
     paddingTop: '2px',
     transition: 'color .3s ease-in-out',
-    marginTop: '4px'
+    marginTop: '4px',
   }
 });
   export default ModelCarStyle

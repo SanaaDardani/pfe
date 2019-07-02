@@ -13,19 +13,7 @@ class ReportingMarques extends PureComponent {
   
   renderActiveShape = props => {
     const RADIAN = Math.PI / 180;
-    const {
-      cx,
-      cy,
-      midAngle,
-      innerRadius,
-      outerRadius,
-      startAngle,
-      endAngle,
-      fill,
-      payload,
-      percent,
-      value
-    } = props;
+    const {cx,cy,midAngle,innerRadius,outerRadius,startAngle,endAngle,fill,payload,percent,value} = props;
     const sin = Math.sin(-RADIAN * midAngle);
     const cos = Math.cos(-RADIAN * midAngle);
     const sx = cx + (outerRadius + 10) * cos;
@@ -107,7 +95,7 @@ class ReportingMarques extends PureComponent {
 
   render() {
     return (
-      <PieChart width={400} height={270} style={{width:'100%',textAlign:'center'}}>
+      <PieChart width={400} height={400} style={{width:'100%',textAlign:'center'}}>
         <Pie
           activeIndex={this.state.activeIndex}
           activeShape={this.renderActiveShape}

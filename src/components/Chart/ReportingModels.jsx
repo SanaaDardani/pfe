@@ -1,42 +1,51 @@
 import React, { PureComponent } from "react";
-import { ScatterChart,Scatter,XAxis,YAxis,ZAxis,CartesianGrid,Tooltip,
-        Legend,PieChart,Pie,Cell,BarChart,Bar }
-    from "recharts";
+import { ScatterChart,Scatter,XAxis,YAxis,ZAxis,CartesianGrid,Tooltip,Legend}from "recharts";
 import Grid from '@material-ui/core/Grid';
 import logo from '../../assets/img/logoCar.png';
+import Paper from "@material-ui/core/Paper";
+import Typography from '@material-ui/core/Typography';
+import { withStyles } from "@material-ui/core/styles";
+
+const styles = theme => ({
+    paper: {
+    marginTop: theme.spacing.unit * 3,
+    marginBottom: theme.spacing.unit * 3,
+    padding: theme.spacing.unit * 2,
+    [theme.breakpoints.up(600 + theme.spacing.unit * 3 * 2)]: {
+      marginTop: theme.spacing.unit * 6,
+      marginBottom: theme.spacing.unit * 6,
+      padding: theme.spacing.unit * 3,
+      margin: "10px"
+    }
+}
+})
+
 const dataScater1 = [
-  { x: 100, y: 200, z: 1900},
-  { x: 120, y: 100, z: 260 },
-  { x: 170, y: 300, z: 400 },
-  { x: 140, y: 250, z: 280 },
-  { x: 150, y: 400, z: 500 },
-  { x: 110, y: 280, z: 200 },
+  { x: 100, y: 200, z: 1900, details: {titre:'frefer', desc: 'jhkjhkhk', img:'jhgjhgjgj'} },
+  { x: 120, y: 100, z: 260, details: {titre:'frefer', desc: 'jhkjhkhk', img:'jhgjhgjgj'} },
+  { x: 170, y: 300, z: 400, details: {titre:'frefer', desc: 'jhkjhkhk', img:'jhgjhgjgj'} },
+  { x: 140, y: 250, z: 280, details: {titre:'frefer', desc: 'jhkjhkhk', img:'jhgjhgjgj'} },
+  { x: 150, y: 400, z: 500, details: {titre:'frefer', desc: 'jhkjhkhk', img:{logo} } },
+  { x: 110, y: 280, z: 200, details: {titre:'frefer', desc: 'jhkjhkhk', img:'jhgjhgjgj'} },
   
 ];
-const dataScater2 = [
-  { x: 200, y: 260, z: 240 },
-  { x: 240, y: 290, z: 220 },
-  { x: 190, y: 290, z: 250 },
-  { x: 198, y: 250, z: 210 },
-  { x: 180, y: 280, z: 260 },
-  { x: 210, y: 220, z: 230 }
-];
-const dataScater3 = [
-    { x: 210, y: 520, z: 571 },
-    { x: 110, y: 250, z: 100 },
-    { x: 547, y: 290, z: 250 },
-    { x: 255, y: 321, z: 200 },
-    { x: 578, y: 541, z: 260 },
-    { x: 195, y: 145, z: 230 }
-  ];
 
-const   CustomTooltip = () => {
-    return (
-      <div className='custom-tooltip'>
-            <img src={logo} width="100" height="50"/>
-      </div>
-    );
-  }
+  const CustomTooltip = (props) => {
+      return (
+        <div className='custom-tooltip'>
+           <Paper className={props.paper}>
+                <Typography variant="h6" gutterBottom>
+                    data.details.titre
+                </Typography>
+                <Typography variant="overline" display="block" gutterBottom>
+                    overline text
+                </Typography>
+                <img src={logo} width="100" height="50" alt="img" />
+            </Paper>
+        </div>
+       
+      )
+    }
 class ModelsReporting extends PureComponent {
   render() {
     return (
@@ -55,8 +64,6 @@ class ModelsReporting extends PureComponent {
                         <Tooltip cursor={{ strokeDasharray: '3 3' }} content={<CustomTooltip />}/>
                         <Legend />
                         <Scatter name="A school" data={dataScater1} fill="#8884d8" />
-                        <Scatter name="B school" data={dataScater2} fill="#82ca9d" />
-                        <Scatter name="c school" data={dataScater3} fill="#FF8042" />
                     </ScatterChart>
                 </Grid>
             </Grid>
@@ -64,4 +71,4 @@ class ModelsReporting extends PureComponent {
     );
   }
 }
-export default ModelsReporting;
+export default withStyles(styles, { withTheme: true })(ModelsReporting);

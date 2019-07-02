@@ -10,7 +10,8 @@ const HeaderStyle = theme => ({
     {
       backgroundImage: 'linear-gradient(45deg, #0288d1, #26c6da)',
       boxShadow: '0 6px 20px 0 rgba(38, 198, 218, .5)',
-      maxHeight: '70px',
+      maxHeight: '40px',
+      minHeight: '40px',
       position: "relative"
     },
       avatar: {
