@@ -28,6 +28,9 @@ export default function MediaCard() {
 
   return (
     <div style={{margin:'40px 0 0 0',overflow:'hidden'}}>
+        <Typography variant="h5" style={{textAlign:'center',margin:'0 0 15px 0'}}>
+            Bonne Affaire Duster a ne pas RATER
+        </Typography>
         <Grid container spacing={2}> 
             <Grid item xs={2}></Grid>
                 <Grid container item xs={2}>
