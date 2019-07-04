@@ -9,9 +9,8 @@ import Auxi from "../../hoc/Auxi";
 import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
 import ModelCarStyle from "./Modelcar.style";
+import { Typography } from '@material-ui/core';
 import {
-  ScatterChart,
-  Scatter,
   XAxis,
   YAxis,
   ZAxis,
@@ -22,7 +21,8 @@ import {
   Pie,
   Cell,
   BarChart,
-  Bar
+  Bar,
+  Label
 } from "recharts";
 
 // Action creators
@@ -41,39 +41,48 @@ class ModelCar extends Component {
 
     return (
       <Auxi>
+           
         <Grid container className={classes.root}>
-          <Grid item xs={12}>
-            <BarChart
-              width={500}
-              height={300}
-              data={adsModel}
-              margin={{ top: 20,bottom: 5 }}
-              className={classes.barChart}
-            
-            >
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="model" />
-              <YAxis />
-              <Tooltip />
-              <Legend />
-              {/* <Bar dataKey="model" fill="#8884d8" /> */}
-              <Bar dataKey="numberOfAds" fill="#82ca9d" />
-            </BarChart>
-          </Grid>
-          {models.map((model, index) => {
-            return (
-              <Grid item xs={2} key={index}>
-                <Card className={classes.card}>
-                  <NavLink to={`/${model.model}`} className={classes.link}>
-                    <CardContent>
-                      <h3 className={classes.stTitle}>{model.model}</h3>
-                      <span className={classes.price}>{model.price}</span>
-                    </CardContent>
-                  </NavLink>
-                </Card>
-              </Grid>
-            );
-          })}
+       
+            <Grid item xs={6}>
+            <Typography variant="h1" style={{fontSize:'20px', fontWeight:"bold", left:"10px"}}>
+                le marché du : {this.props.match.params.model} au maroc
+            </Typography>
+                <BarChart
+                width={600}
+                height={500}
+                data={adsModel}
+                margin={{ top: 40,bottom: 5 }}
+                
+                >
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="model">
+                    <Label value="Modéles" offset={0} position="insideBottom" stroke="#8884d8" />
+                </XAxis>
+                <YAxis>
+                    <Label value="Nombre Annonces" offset={10} position="insideTop" stroke="#8884d8" />
+                </YAxis>
+                <Tooltip />
+                <Legend />
+                <Bar dataKey="numberOfAds" fill="#26c6da" />
+                </BarChart>
+            </Grid>
+            <Grid container item xs={6}>
+                {models.map((model, index) => {
+                    return (
+                    <Grid item xs={3} key={index}>
+                        <Card className={classes.card}>
+                          <NavLink to={`/${model.model}`} className={classes.link}>
+                              <CardContent className={classes.content}>
+                              <h3 className={classes.stTitle}>{model.model}</h3>
+                              <span className={classes.price}>{model.price} DH</span>
+                              </CardContent>
+                          </NavLink>
+                        </Card>
+                    </Grid>
+                    );
+                })}
+            </Grid>
         </Grid>
       </Auxi>
     );

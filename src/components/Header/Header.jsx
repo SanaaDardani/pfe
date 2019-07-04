@@ -74,12 +74,15 @@ import logo from '../../assets/img/logoCar.png';
       return (
         <div className={classes.root}>
             <AppBar position="absolute" color="default" className={classes.styleAppBar}>
-                <Toolbar>
-                    <Avatar alt="Logo" src={logo} className={classes.avatar} />  
-                        <div className={classes.grow} />
+                <Toolbar className={classes.styleAppBar}>
+                    {/* <Avatar alt="Logo" src={logo} className={classes.avatar} />   */}
+                        {/* <div className={classes.grow} /> */}
                             <div className={classes.sectionDesktop}>
                                 <NavLink to="/" exact className={classes.link} activeStyle={{color:'#fff'}} >
-                                    Accueil
+                                    Cote gratuite
+                                </NavLink>
+                                <NavLink to="/cardMarket" exact className={classes.link} activeStyle={{color:'#fff'}} >
+                                    Marché Automobile Au Maroc
                                 </NavLink>
                             </div>
                             <div className={classes.sectionMobile}>
