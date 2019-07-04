@@ -1,74 +1,289 @@
-import React, { PureComponent } from "react";
-import { ScatterChart,Scatter,XAxis,YAxis,ZAxis,CartesianGrid,Tooltip,Legend}from "recharts";
-import Grid from '@material-ui/core/Grid';
-import logo from '../../assets/img/logoCar.png';
-import Paper from "@material-ui/core/Paper";
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import { withStyles } from "@material-ui/core/styles";
+import Grid from "@material-ui/core/Grid";
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
 
-const styles = theme => ({
-    paper: {
-    marginTop: theme.spacing.unit * 3,
-    marginBottom: theme.spacing.unit * 3,
-    padding: theme.spacing.unit * 2,
-    [theme.breakpoints.up(600 + theme.spacing.unit * 3 * 2)]: {
-      marginTop: theme.spacing.unit * 6,
-      marginBottom: theme.spacing.unit * 6,
-      padding: theme.spacing.unit * 3,
-      margin: "10px"
-    }
-}
-})
-
-const dataScater1 = [
-  { x: 100, y: 200, z: 1900, details: {titre:'frefer', desc: 'jhkjhkhk', img:'jhgjhgjgj'} },
-  { x: 120, y: 100, z: 260, details: {titre:'frefer', desc: 'jhkjhkhk', img:'jhgjhgjgj'} },
-  { x: 170, y: 300, z: 400, details: {titre:'frefer', desc: 'jhkjhkhk', img:'jhgjhgjgj'} },
-  { x: 140, y: 250, z: 280, details: {titre:'frefer', desc: 'jhkjhkhk', img:'jhgjhgjgj'} },
-  { x: 150, y: 400, z: 500, details: {titre:'frefer', desc: 'jhkjhkhk', img:{logo} } },
-  { x: 110, y: 280, z: 200, details: {titre:'frefer', desc: 'jhkjhkhk', img:'jhgjhgjgj'} },
-  
-];
-
-  const CustomTooltip = (props) => {
-      return (
-        <div className='custom-tooltip'>
-           <Paper className={props.paper}>
-                <Typography variant="h6" gutterBottom>
-                    data.details.titre
-                </Typography>
-                <Typography variant="overline" display="block" gutterBottom>
-                    overline text
-                </Typography>
-                <img src={logo} width="100" height="50" alt="img" />
-            </Paper>
-        </div>
-       
-      )
-    }
-class ModelsReporting extends PureComponent {
-  render() {
-    return (
-        <>
-          
-            <Grid container>
-            <Grid item xs={2}></Grid>              
-                <Grid item xs={12}>
-                    <ScatterChart width={900} height={300}
-                        margin={{ top: 30,bottom: 20}} style={{textAlign:'center',width:'100%'}}>
-                        <CartesianGrid strokeDasharray="3 3" />
-                     
-                        <XAxis dataKey="x" name="stature" unit="cm" />
-                        <YAxis dataKey="y" name="weight" unit="kg" />
-                        <ZAxis dataKey="z" range={[64, 144]} name="score" unit="km" />
-                        <Tooltip cursor={{ strokeDasharray: '3 3' }} content={<CustomTooltip />}/>
-                        <Legend />
-                        <Scatter name="A school" data={dataScater1} fill="#8884d8" />
-                    </ScatterChart>
-                </Grid>
-            </Grid>
-        </>
-    );
+const useStyles = makeStyles({
+  card: {
+  },
+  media: {
+    height: 126,
+  },
+  list:{
+      padding:0
   }
+  
+});
+
+export default function MediaCard() {
+  const classes = useStyles();
+
+  return (
+    <div style={{margin:'40px 0 0 0',overflow:'hidden'}}>
+        <Grid container spacing={2}> 
+            <Grid item xs={2}></Grid>
+                <Grid container item xs={2}>
+                    <Card className={classes.card}>
+                <CardActionArea>
+                    <CardMedia
+                    className={classes.media}
+                    image="https://www.avito.ma/images/80/8045680283.jpg"
+                    title="Dacia duster -2013"
+                    />
+                    <CardContent>
+                    <Typography gutterBottom variant="h5" component="h2">
+                        10 000 DH
+                    </Typography>
+                    <ListItem className={classes.list}>
+                        <ListItemText primary="Année-Modèle: 2013"/>
+                    </ListItem>
+                    <ListItem className={classes.list}>
+                        <ListItemText primary="carburant: Diesel"/>
+                    </ListItem>
+                    <ListItem className={classes.list}>
+                        <ListItemText primary="km: 100 000 - 109 999"/>
+                    </ListItem>
+                    <ListItem className={classes.list}>
+                        <ListItemText primary="Marque: Dacia"/>
+                    </ListItem>
+                    <ListItem className={classes.list}>
+                        <ListItemText primary="Modèle: Duster"/>
+                    </ListItem>
+                    </CardContent>
+                </CardActionArea>
+                </Card>
+                </Grid>
+                <Grid container item xs={2}>
+                    <Card className={classes.card}>
+                <CardActionArea>
+                    <CardMedia
+                    className={classes.media}
+                    image="https://www.avito.ma/images/80/8098475161.jpg"
+                    title="Dacia duster 2×4 diesel -2012"
+                    />
+                    <CardContent>
+                    <Typography gutterBottom variant="h5" component="h2">
+                        85 000 DH
+                    </Typography>
+                    <ListItem className={classes.list}>
+                        <ListItemText primary="Année-Modèle: 2012"/>
+                    </ListItem>
+                    <ListItem className={classes.list}>
+                        <ListItemText primary="carburant: Diesel"/>
+                    </ListItem>
+                    <ListItem className={classes.list}>
+                        <ListItemText primary="km: 160 000 - 169 999"/>
+                    </ListItem>
+                    <ListItem className={classes.list}>
+                        <ListItemText primary="Marque: Dacia"/>
+                    </ListItem>
+                    <ListItem className={classes.list}>
+                        <ListItemText primary="Modèle: Duster"/>
+                    </ListItem>
+                    </CardContent>
+                </CardActionArea>
+                </Card>
+                </Grid>
+                <Grid container item xs={2}>
+                    <Card className={classes.card}>
+                <CardActionArea>
+                    <CardMedia
+                    className={classes.media}
+                    image="https://www.avito.ma/images/80/8044223309.jpg"
+                    title="Duster -2016"
+                    />
+                    <CardContent>
+                    <Typography gutterBottom variant="h5" component="h2">
+                        12 500 DH
+                    </Typography>
+                    <ListItem className={classes.list}>
+                        <ListItemText primary="Année-Modèle: 2016"/>
+                    </ListItem>
+                    <ListItem className={classes.list}>
+                        <ListItemText primary="carburant: Diesel"/>
+                    </ListItem>
+                    <ListItem className={classes.list}>
+                        <ListItemText primary="km: 0 - 4 999"/>
+                    </ListItem>
+                    <ListItem className={classes.list}>
+                        <ListItemText primary="Marque: Dacia"/>
+                    </ListItem>
+                    <ListItem className={classes.list}>
+                        <ListItemText primary="Modèle: Duster"/>
+                    </ListItem>
+                    </CardContent>
+                </CardActionArea>
+                </Card>
+                </Grid>
+                <Grid container item xs={2}>
+                    <Card className={classes.card}>
+                <CardActionArea>
+                    <CardMedia
+                    className={classes.media}
+                    image="https://www.avito.ma/images/66/6688152518.jpg"
+                    title="Dacia Duster Diesel -2018"
+                    />
+                    <CardContent>
+                    <Typography gutterBottom variant="h5" component="h2">
+                        102 000 DH
+                    </Typography>
+                    <ListItem className={classes.list}>
+                        <ListItemText primary="Année-Modèle: 2012"/>
+                    </ListItem>
+                    <ListItem className={classes.list}>
+                        <ListItemText primary="carburant: Diesel"/>
+                    </ListItem>
+                    <ListItem className={classes.list}>
+                        <ListItemText primary="km: 0 - 4 999"/>
+                    </ListItem>
+                    <ListItem className={classes.list}>
+                        <ListItemText primary="Marque: Dacia"/>
+                    </ListItem>
+                    <ListItem className={classes.list}>
+                        <ListItemText primary="Modèle: Duster"/>
+                    </ListItem>
+                    </CardContent>
+                </CardActionArea>
+                </Card>
+                </Grid>
+            <Grid item xs={2}></Grid>
+
+            <Grid item xs={2}></Grid>
+                <Grid container item xs={2}>
+                        <Card className={classes.card}>
+                    <CardActionArea>
+                        <CardMedia
+                        className={classes.media}
+                        image="https://www.avito.ma/images/72/7228700272.jpg"
+                        title="Dacia duster -2015"
+                        />
+                        <CardContent>
+                        <Typography gutterBottom variant="h5" component="h2">
+                            13 000 DH
+                        </Typography>
+                        <ListItem className={classes.list}>
+                            <ListItemText primary="Année-Modèle: 2015"/>
+                        </ListItem>
+                        <ListItem className={classes.list}>
+                            <ListItemText primary="carburant: Diesel"/>
+                        </ListItem>
+                        <ListItem className={classes.list}>
+                            <ListItemText primary="km: 90 000 - 94 999"/>
+                        </ListItem>
+                        <ListItem className={classes.list}>
+                            <ListItemText primary="Marque: Dacia"/>
+                        </ListItem>
+                        <ListItem className={classes.list}>
+                            <ListItemText primary="Modèle: Duster"/>
+                        </ListItem>
+                        </CardContent>
+                    </CardActionArea>
+                    </Card>
+                    </Grid>
+                <Grid container item xs={2}>
+                        <Card className={classes.card}>
+                    <CardActionArea>
+                        <CardMedia
+                        className={classes.media}
+                        image="https://www.avito.ma/images/66/6688152518.jpg"
+                        title="Dacia duster -2018"
+                        />
+                        <CardContent>
+                        <Typography gutterBottom variant="h5" component="h2">
+                            10 800 DH
+                        </Typography>
+                        <ListItem className={classes.list}>
+                            <ListItemText primary="Année-Modèle: 2018"/>
+                        </ListItem>
+                        <ListItem className={classes.list}>
+                            <ListItemText primary="carburant: Diesel"/>
+                        </ListItem>
+                        <ListItem className={classes.list}>
+                            <ListItemText primary="km: 0 - 4 9999"/>
+                        </ListItem>
+                        <ListItem className={classes.list}>
+                            <ListItemText primary="Marque: Dacia"/>
+                        </ListItem>
+                        <ListItem className={classes.list}>
+                            <ListItemText primary="Modèle: Duster"/>
+                        </ListItem>
+                        </CardContent>
+                    </CardActionArea>
+                    </Card>
+                    </Grid>
+                <Grid container item xs={2}>
+                        <Card className={classes.card}>
+                    <CardActionArea>
+                        <CardMedia
+                        className={classes.media}
+                        image="https://www.avito.ma/images/81/8110445530.jpg"
+                        title="Dacia duster -2010"
+                        />
+                        <CardContent>
+                        <Typography gutterBottom variant="h5" component="h2">
+                            75 000 DH
+                        </Typography>
+                        <ListItem className={classes.list}>
+                            <ListItemText primary="Année-Modèle: 2010"/>
+                        </ListItem>
+                        <ListItem className={classes.list}>
+                            <ListItemText primary="carburant: Essence"/>
+                        </ListItem>
+                        <ListItem className={classes.list}>
+                            <ListItemText primary="km: 10 000 - 14 999"/>
+                        </ListItem>
+                        <ListItem className={classes.list}>
+                            <ListItemText primary="Marque: Dacia"/>
+                        </ListItem>
+                        <ListItem className={classes.list}>
+                            <ListItemText primary="Modèle: Duster"/>
+                        </ListItem>
+                        </CardContent>
+                    </CardActionArea>
+                    </Card>
+                    </Grid>
+                <Grid container item xs={2}>
+                    <Card className={classes.card}>
+                <CardActionArea>
+                    <CardMedia
+                    className={classes.media}
+                    image="https://www.avito.ma/images/81/8153403428.jpg"
+                    title="Dacia duster -2013"
+                    />
+                    <CardContent>
+                    <Typography gutterBottom variant="h5" component="h2">
+                        107 000 DH
+                    </Typography>
+                    <ListItem className={classes.list}>
+                        <ListItemText primary="Année-Modèle: 2012"/>
+                    </ListItem>
+                    <ListItem className={classes.list}>
+                        <ListItemText primary="carburant: Diesel"/>
+                    </ListItem>
+                    <ListItem className={classes.list}>
+                        <ListItemText primary="km: 90 000 - 94 999"/>
+                    </ListItem>
+                    <ListItem className={classes.list}>
+                        <ListItemText primary="Marque: Dacia"/>
+                    </ListItem>
+                    <ListItem className={classes.list}>
+                        <ListItemText primary="Modèle: Duster"/>
+                    </ListItem>
+                    </CardContent>
+                </CardActionArea>
+                </Card>
+                </Grid>
+            <Grid item xs={2}></Grid>
+        
+        </Grid>
+    </div>
+  );
 }
-export default withStyles(styles, { withTheme: true })(ModelsReporting);

@@ -9,6 +9,7 @@ import Auxi from "../../hoc/Auxi";
 import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
 import ModelCarStyle from "./Modelcar.style";
+import { Typography } from '@material-ui/core';
 import {
   XAxis,
   YAxis,
@@ -20,7 +21,8 @@ import {
   Pie,
   Cell,
   BarChart,
-  Bar
+  Bar,
+  Label
 } from "recharts";
 
 // Action creators
@@ -39,18 +41,27 @@ class ModelCar extends Component {
 
     return (
       <Auxi>
+           
         <Grid container className={classes.root}>
+       
             <Grid item xs={6}>
+            <Typography variant="h1" style={{fontSize:'20px', fontWeight:"bold", left:"10px"}}>
+                le marché du : {this.props.match.params.model} au maroc
+            </Typography>
                 <BarChart
-                width={500}
-                height={300}
+                width={600}
+                height={500}
                 data={adsModel}
-                margin={{ top: 20,bottom: 5 }}
+                margin={{ top: 40,bottom: 5 }}
                 
                 >
                 <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="model" />
-                <YAxis />
+                <XAxis dataKey="model">
+                    <Label value="Modéles" offset={0} position="insideBottom" stroke="#8884d8" />
+                </XAxis>
+                <YAxis>
+                    <Label value="Nombre Annonces" offset={10} position="insideTop" stroke="#8884d8" />
+                </YAxis>
                 <Tooltip />
                 <Legend />
                 <Bar dataKey="numberOfAds" fill="#26c6da" />

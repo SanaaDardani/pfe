@@ -76,14 +76,14 @@ import logo from '../../assets/img/logoCar.png';
             <AppBar position="absolute" color="default" className={classes.styleAppBar}>
                 <Toolbar className={classes.styleAppBar}>
                     {/* <Avatar alt="Logo" src={logo} className={classes.avatar} />   */}
-                        <div className={classes.grow} />
+                        {/* <div className={classes.grow} /> */}
                             <div className={classes.sectionDesktop}>
                                 <NavLink to="/" exact className={classes.link} activeStyle={{color:'#fff'}} >
-                                    <i className="material-icons">home</i>
+                                    Cote gratuite
                                 </NavLink>
-                                {/* <NavLink to="/cote" exact className={classes.link} activeStyle={{color:'#fff'}} >
-                                    Cote
-                                </NavLink> */}
+                                <NavLink to="/cardMarket" exact className={classes.link} activeStyle={{color:'#fff'}} >
+                                    Marché Automobile Au Maroc
+                                </NavLink>
                             </div>
                             <div className={classes.sectionMobile}>
                                 <IconButton aria-haspopup="true" onClick={this.handleMobileMenuOpen} color="inherit">

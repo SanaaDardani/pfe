@@ -9,6 +9,7 @@ import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import Paper from "@material-ui/core/Paper";
 import FormControl from "@material-ui/core/FormControl";
+import FormHelperText from '@material-ui/core/FormHelperText';
 import axios from "axios";
 import history from '../../history';
 
@@ -20,14 +21,17 @@ const styles = theme => ({
     paddingTop: "30px",
     textAlign:"center"
   },
+  inputLabel:{
+   fontSize:'10px'
+  },
   formControl: {
     margin: theme.spacing.unit,
-    minWidth: 120
+    minWidth: 150
   },
   textField: {
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
-    maxWidth: 120
+    maxWidth: 150
   },
   paper: {
     marginTop: theme.spacing.unit * 3,
@@ -41,9 +45,14 @@ const styles = theme => ({
     }
   },
   button: {
-    margin: "0 auto",
-    backgroundImage : 'linear-gradient(45deg, #0288d1, #26c6da)'
-  }
+    margin: "20px auto",
+    background: '#559ee2',
+    boxShadow: '0 6px 20px 0 rgba(85, 158, 226, 0.2)',
+    lineHeight: "1.95",
+    width:'23%',
+    padding:'6px'
+  },
+  
 });
 
 class CoteForm extends Component {
@@ -58,6 +67,7 @@ class CoteForm extends Component {
         selectedCarburant: "",
         date: "",
         selectedCity: "",
+        puissance : "",
         values: [],
         models: [],
         carburants: [],
@@ -87,24 +97,25 @@ class CoteForm extends Component {
         
     }
 
-        handleChangeMarksSelect = event => {
-            this.setState({
-            selectedMark: event.target.value
-            });
+    handleChangeMarksSelect = event => {
+          console.log(event.target.value)
+        this.setState({
+        selectedMark: event.target.value
+        });
         axios
-        .get("http://127.0.0.1:8000/api/models/" + event.target.value)
+        .get("http://127.0.0.1:8000/api/models/mark-id/" + event.target.value)
         .then(res => {
             this.setState({ models: res.data });
         });
-  };
+    };
 
-  handleChangeModelsSelect = event => {
+    handleChangeModelsSelect = event => {
     this.setState({
       selectedModel: event.target.value
     });
   };
-  handleChangeCarburantsSelect = event =>
-  {
+    handleChangeCarburantsSelect = event =>
+    {
     this.setState({
       selectedCarburant : event.target.value
     })
@@ -114,7 +125,6 @@ class CoteForm extends Component {
     this.setState({
       selectedCity : event.target.value
     })
-    
   }
   handleChange = name => event => {
     this.setState({ [name]: event.target.value });
@@ -182,6 +192,18 @@ class CoteForm extends Component {
     return options;
   };
   
+  renderPowerOptions = () => {
+    const options = [];
+     for (let i = 4; i <= 40; i++) {
+      options.push(
+        <MenuItem value={i} key={i}>
+          {i}
+        </MenuItem>
+      );
+    }
+    return options;
+  };
+
   render() {
     const { classes } = this.props;
     return (
@@ -189,24 +211,26 @@ class CoteForm extends Component {
         <Paper className={classes.paper}>
          <Grid container className={classes.root}>
             <Grid item xs={6}>
-                <FormControl required className={classes.formControl}>
+                <FormControl className={classes.formControl}>
                     <InputLabel> Marques </InputLabel>
                     <Select
-                    value={this.state.selectedMark}
-                    onChange={this.handleChangeMarksSelect}
-                    name="marque"
-                    >
-                    {this.renderMarquesOptions()}
+                        value={this.state.selectedMark}
+                        onChange={this.handleChangeMarksSelect}
+                        name="marque"
+                        className={classes.select}
+                        >
+                        {this.renderMarquesOptions()}
                     </Select>
                 </FormControl>
             </Grid>
             <Grid item xs={6}>
-              <FormControl required className={classes.formControl}>
+              <FormControl className={classes.formControl}>
                 <InputLabel> Models </InputLabel>
                 <Select
                   value={this.state.selectedModel}
                   onChange={this.handleChangeModelsSelect}
                   name="model"
+                  className={classes.select}
                 >
                   {this.renderModelsOptions()}
                 </Select>
@@ -214,9 +238,8 @@ class CoteForm extends Component {
             </Grid>
             <Grid item xs={6}>
               <TextField
-                required
                 label="Kilométrage"
-                value={this.state.age}
+                value={this.state.kilometre}
                 onChange={this.handleChange("kilometre")}
                 type="number"
                 className={classes.textField}
@@ -224,36 +247,52 @@ class CoteForm extends Component {
               />
             </Grid>
             <Grid item xs={6}>
-              <FormControl required className={classes.formControl}>
+              <FormControl className={classes.formControl}>
+                <InputLabel> Puissance fiscale </InputLabel>
+                <Select
+                  value={this.state.puissance}
+                  onChange={this.handleChange("puissance")}
+                  name="puissance"
+                  className={classes.select}
+                >
+                  {this.renderPowerOptions()}
+                </Select>
+              </FormControl>
+            </Grid>
+            <Grid item xs={6}>
+              <FormControl className={classes.formControl}>
                 <InputLabel> Carburants </InputLabel>
                 <Select
                   value={this.state.selectedCarburant}
                   onChange={this.handleChangeCarburantsSelect}
                   name="carburant"
+                  className={classes.select}
                 >
                   {this.renderCarburantsOptions()}
                 </Select>
               </FormControl>
             </Grid>
             <Grid item xs={6}>
-              <FormControl required className={classes.formControl}>
+              <FormControl className={classes.formControl}>
                 <InputLabel> Année </InputLabel>
                 <Select
                   value={this.state.date}
                   onChange={this.handleChange("date")}
                   name="year"
+                  className={classes.select}
                 >
                   {this.renderYearsOptions()}
                 </Select>
               </FormControl>
             </Grid>
             <Grid item xs={6}>
-            <FormControl required className={classes.formControl}>
+            <FormControl className={classes.formControl}>
               <InputLabel> Ville </InputLabel>
               <Select
                 value={this.state.selectedCity}
                 onChange={this.handleChangeCitiesSelect}
                 name="city"
+                className={classes.select}
               >
                 {this.renderCitiesOptions()}
               </Select>
@@ -267,7 +306,7 @@ class CoteForm extends Component {
               value="submit"
               type="submit"
             >
-              Envoyée
+              Chercher
             </Button>
           </Grid>
         </Paper>
